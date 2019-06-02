@@ -63,6 +63,7 @@ class Navbar extends Component{
                ContentProps={{
                 'aria-describedby': 'message-id',
               }}
+              onClose={this.handleClose}
               message={<span id="message-id">Changed Format To {format.toUpperCase()}</span>}
               action={[
                 <IconButton
