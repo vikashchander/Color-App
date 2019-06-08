@@ -14,14 +14,14 @@ root:{
 },
 color:{
 backgroundColor:'dae1e4',
-height:"150px",
+height:"100px",
 width:'100%',
-marginTop:"-4.5rem",
 borderRadius: "5px",
-overflow: "hidden"
+overflow:'hidden'
 },
 title:{
 display:'flex',
+height:"1.5rem",
 justifyContent:'space-between',
 alignItems:'center',
 margin:'0',
@@ -55,8 +55,8 @@ function  MiniPalette(props){
         />
     );
     return (
-          <div className={classes.root}>
-            <div className={classes.color} />
+          <div className={classes.root} onClick ={props.handleClick}>
+
             <div className={classes.color}>{miniColorsBox}</div>
               <h5 className={classes.title}>
                  {paletteName}  <span className={classes.emoji}>{emoji}</span>

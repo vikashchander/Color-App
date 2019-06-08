@@ -7,7 +7,8 @@ const  styles= {
         height: '100vh',
         display:'flex',
         alignItems:'flex-start',
-        justifyContent:'center'
+        justifyContent:'center', 
+        overflow:'hidden'
     },
     container:{
         width:'50%',
@@ -15,7 +16,6 @@ const  styles= {
         alignItems:'flex-start',
         flexDirection:'column',
         flexWrap:'wrap'
-
     },
     nav:{
 display:'flex',
@@ -33,15 +33,13 @@ color:'white'
 }
 
 class paletteList extends Component{
-   
+   goToPalette(id){
+     this.props.history.push(`/palette/${id}`);
+   }
     render() {
         const {classes,palettes} =this.props;
-    console.log(classes); 
         const paletteList = palettes.map(palette =>(
-           <>
-            <MiniPalette  {...palette } />
-           
-         </>
+            <MiniPalette  {...palette} handleClick={()=>{this.goToPalette(palette.id)}} />
             )) 
     return (
         <div className={classes.root}>
