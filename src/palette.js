@@ -28,6 +28,7 @@ class Palette extends Component{
             background={color[format]} 
             key={color.id} 
             moreUrl ={`/palette/${id}/${color.id}`}
+            showMoreLink ={true}
             />
         ));
         return (
