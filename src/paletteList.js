@@ -5,7 +5,7 @@ const  styles= {
     root:{
         backgroundColor:'blue',
         height: '100vh',
-        display:'flex',
+        display:'flex', 
         alignItems:'flex-start',
         justifyContent:'center', 
         overflow:'hidden'
