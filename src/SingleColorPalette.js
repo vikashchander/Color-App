@@ -33,14 +33,14 @@ export default class SingleColorPalette extends Component{
     render() {
         const {paletteName, emoji,id} = this.props.palette;
         const {format }=this.state;
-        const colorBoxes = this._shades.map(color =>
+        const colorBoxes = this._shades.map(color =>(
             <ColorBox  
             key={color.name}
             name={color.name}
             background ={color[format]}
-           showMoreLink ={false}
+           showFullPalette={false}
             />
-            )
+            ));
         return (
             <div className='SingleColorPalette palette'>
                  <Navbar  changeValue = {this.changeValue} ShowSlider={false}/>

@@ -11,7 +11,7 @@
 .SingleColorPalette .ColorBox{
   height: 50%;
 }
-.ColorBox.go-btn {
+.go-btn {
   background-color: black;  
   position: relative;
 }
@@ -130,5 +130,4 @@ text-transform: uppercase;
   .copy-msg p{
       font-size: 3rem;
       font-weight: 100;
-      color:white;
   }
