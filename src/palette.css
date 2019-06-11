@@ -1,13 +1,13 @@
-.palette{
+/* .palette{
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
+} */
 
-.palette-colors{
+/* .palette-colors{
     height: 90%;
-}
+} */
 
 .palette-footer{
     height: 3vh;
