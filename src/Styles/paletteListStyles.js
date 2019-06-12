@@ -18,7 +18,14 @@ export default {
 display:'flex',
 width:'100%',
 justifyContent:"space-between",
-color:'white'
+color:'white',
+alignItems: 'center',
+'& a':{
+textDecoration: 'none',
+color:"white",
+fontSize: '20px',
+fontWeight:"200px"
+}
     },
     palettes:{
         boxSizing:'border-box',
