@@ -86,6 +86,7 @@ class NewPaletteForm extends Component {
 this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
@@ -118,7 +119,17 @@ this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.setState({ newName: evt.target.value });
   }
 
-  render() {
+  handleSubmit(){
+    let newName = 'the new palette'
+   const newColorsPalette={
+    paletteName :newName,
+    id:newName.toLowerCase().replace(/ /g,'-'),
+    colors :this.state.colors
+    };
+    this.props.savePalette(newColorsPalette);  //passing from chlid to parent class
+    this.props.history.push('/');  
+} 
+  render(){
     const { classes } = this.props;
     const { open } = this.state;
     return (
@@ -126,6 +137,7 @@ this.updateCurrentColor = this.updateCurrentColor.bind(this);
         <CssBaseline />
         <AppBar
           position='fixed'
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open
           })}
@@ -142,6 +154,11 @@ this.updateCurrentColor = this.updateCurrentColor.bind(this);
             <Typography variant='h6' color='inherit' noWrap>
               Persistent drawer
             </Typography>
+            <Button variant='contained' 
+            color="primary" 
+            onClick={this.handleSubmit}>
+            Save Palette
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer
