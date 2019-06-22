@@ -3,7 +3,6 @@ import Palette from './palette';
 import PaletteList from './paletteList';
 import  PaletteForm from './newPaletteForm';
 import SingleColorPalette from './SingleColorPalette';
-import SeedColor from './seedColor';
 import {generatePalette}  from './colorsHelpers';
 import {Route, Switch} from 'react-router-dom';
 import seedColor from './seedColor';
@@ -19,23 +18,25 @@ class App extends Component{
     }
 
     savePalette(newColorPalette){
-      console.log(newColorPalette);
+     // console.log(newColorPalette);
       this.setState({palettes: [...this.state.palettes, newColorPalette]})
     }
   render() {
-    console.log(generatePalette(SeedColor[6]));
+    //console.log(generatePalette(SeedColor[6]));
     return (
       <Switch>
       <Route exact 
       path='/' 
-      render={(routerProps)=><PaletteList  palettes = {this.state.palettes}
+      render={(routerProps)=>
+        <PaletteList  
+        palettes = {this.state.palettes}
          {...routerProps}
       />} 
       />
       <Route 
         exact 
         path ="/palette/new"
-        render ={(routerProps)=><PaletteForm savePalette={this.savePalette} {...routerProps} />}
+        render ={(routerProps)=><PaletteForm savePalette={this.savePalette} palettes={this.state.palettes} {...routerProps} />}
       />
       <Route exact path='/palette/:id' 
        render={routerProps=>(
@@ -43,7 +44,8 @@ class App extends Component{
        )}
       />
       <Route 
-      exact path = "/palette/:paletteId/:colorId"
+      exact 
+      path = "/palette/:paletteId/:colorId"
       render ={routerProps =>(
         <SingleColorPalette 
         colorId = {routerProps.match.params.colorId} 
