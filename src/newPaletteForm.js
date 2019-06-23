@@ -11,7 +11,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
-import DraggableColorBox from "./DraggableColorBox";
+import DragableColorList from './DragableColorList';
+import { arrayMove } from "react-sortable-hoc";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from "react-color";
 
@@ -87,6 +88,7 @@ class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
@@ -145,6 +147,13 @@ class NewPaletteForm extends Component {
      colors: this.state.colors.filter(color => color.name !==colorName)
    })
   }
+
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex)
+    }));
+  };
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -241,14 +250,12 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          {this.state.colors.map(color => (
-            <DraggableColorBox 
-            color={color.color} 
-            name={color.name}  
-
-            // understand the value of inline function why not using bind event at this
-            handleClick = { () =>this.removeColor(color.name)} />  
-          ))}
+            <DragableColorList 
+            colors={this.state.colors}  
+            removeColor={this.removeColor}
+            axis ='xy'
+            onSortEnd = {this.onSortEnd}
+            />
         </main>
       </div>
     );
