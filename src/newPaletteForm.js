@@ -13,7 +13,7 @@ import DragableColorList from './DragableColorList';
 import { arrayMove } from "react-sortable-hoc";
 
 
-const drawerWidth = 300;
+const drawerWidth = 350;
 const styles = theme => ({
   root: {
     display: "flex"
@@ -41,10 +41,12 @@ const styles = theme => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
+    height:'100vh'
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    display: "flex",
   },
   drawerHeader: {
     display: "flex",
@@ -69,6 +71,22 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  container: {
+    marginLeft:'1rem',
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  buttons: {
+    width: "100%"
+  },
+  button: {
+    margin:'1px auto',
+    width: "50%"
   }
 });
 class NewPaletteForm extends Component {
@@ -138,7 +156,7 @@ class NewPaletteForm extends Component {
      const allColors = this.props.palettes.map(color=>(color.colors)).flat();
      var rand = Math.floor(Math.random() * allColors.length);
      const randColors = allColors[rand];
-   console.log({allColors});
+ //  console.log({allColors});
    this.setState({colors:[...this.state.colors, randColors] })
     }
 
@@ -170,13 +188,19 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
+          <div className={classes.container}>
           <Typography variant='h4'>Design Your Palette</Typography>
-          <div>
-            <Button variant='contained' color='secondary' onClick= {this.clearPalette}>
+          <div  className={classes.buttons}>
+            <Button 
+            variant='contained' 
+            color='secondary' 
+            onClick= {this.clearPalette}
+            className = {classes.button}>
               Clear Palette
             </Button>
             <Button 
             variant='contained' 
+            className={classes.button}
             disabled={isPaletteFull}
             color={isPaletteFull ?'secondary': 'primary' } 
             onClick={this.generateRandomColor}>
@@ -188,6 +212,7 @@ class NewPaletteForm extends Component {
           addNewColor={this.addNewColor}
           colors={colors}
         />
+        </div>
         </Drawer>
         <main
           className={classNames(classes.content, {
