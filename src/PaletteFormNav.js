@@ -23,6 +23,7 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
     height: "64px"
   },
@@ -38,15 +39,24 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
-  navBtns: { }
+  navBtns: {
+    marginRight: "1rem",
+    "& a": {
+      textDecoration: "none"
+    }
+  },
+  button: {
+    margin: "0 0.5rem"
+  }
 });
 
 
 class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
-    this.state = { newPaletteName: "" };
+    this.state = { newPaletteName: "", formShowing:false};
     this.handleChange = this.handleChange.bind(this);
+    this.showForm = this.showForm.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
@@ -60,6 +70,11 @@ class PaletteFormNav extends Component {
       [evt.target.name]: evt.target.value
     });
   }
+
+  showForm() {
+    this.setState({ formShowing: true });
+  }
+
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
     //const { newPaletteName } = this.state;
@@ -87,14 +102,26 @@ class PaletteFormNav extends Component {
             </Typography>
             </Toolbar>
           <div className={classes.navBtns}>
-            <PaletteMetaDialog  palettes={palettes} handleSubmit={handleSubmit}/>
-            <Link to='/'>
-            <Button variant='contained' color='secondary'>
-              Go Back
-            </Button>
+            <Link to='/' >
+            <Button
+            variant='contained'
+            color='secondary'
+            className={classes.button}
+          >Back</Button>
           </Link>
+          <Button
+              variant='contained'
+              color='primary'
+              onClick={this.showForm}
+              className={classes.button}
+            >
+              Save
+            </Button>
         </div>
         </AppBar>
+        {this.state.formShowing && (
+          <PaletteMetaDialog palettes={palettes} handleSubmit={handleSubmit} />
+        )}
       </div>
     );
   }

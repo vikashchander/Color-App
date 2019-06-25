@@ -11,7 +11,7 @@ export default class PaletteMetaDialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          open: false,
+          open: true,
           newPaletteName: ""
         };
         this.handleChange = this.handleChange.bind(this);
@@ -44,35 +44,35 @@ export default class PaletteMetaDialog extends Component {
         Save Palette
       </Button>
       <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Enter Palette Name</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            
-          </DialogContentText>
-          <ValidatorForm
+        <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
+        <ValidatorForm
           onSubmit={() => this.props.handleSubmit(newPaletteName)}
         >
+        <DialogContent>
+          <DialogContentText>
+          Please enter a name for your new beautiful palette. Make sure it's
+          unique!
+          </DialogContentText> 
           <TextValidator
             label='Palette Name'
             value={newPaletteName}
             name='newPaletteName'
+            fullWidth
+            margin='normal'
             onChange={this.handleChange}
             validators={["required", "isPaletteNameUnique"]}
             errorMessages={["Enter Palette Name", "Name already used"]}
           />
-          <Button variant='contained' color='primary' type='submit'>
-            Save Palette
-          </Button>
-        </ValidatorForm>
-      </    DialogContent>
+      </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={this.handleClose} color="primary">
-            Subscribe
+          <Button variant='contained' color='primary' type='submit'>
+            Save Palette
           </Button>
         </DialogActions>
+        </ValidatorForm>
       </Dialog>
     </div>
   );
