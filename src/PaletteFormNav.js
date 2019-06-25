@@ -45,9 +45,7 @@ const styles = theme => ({
       textDecoration: "none"
     }
   },
-  button: {
-    margin: "0 0.5rem"
-  }
+
 });
 
 
@@ -57,6 +55,7 @@ class PaletteFormNav extends Component {
     this.state = { newPaletteName: "", formShowing:false};
     this.handleChange = this.handleChange.bind(this);
     this.showForm = this.showForm.bind(this);
+    this.handleHide = this.handleHide.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
@@ -75,6 +74,9 @@ class PaletteFormNav extends Component {
     this.setState({ formShowing: true });
   }
 
+  handleHide(){
+    this.setState({formShowing:false})
+  }
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
     //const { newPaletteName } = this.state;
@@ -120,7 +122,8 @@ class PaletteFormNav extends Component {
         </div>
         </AppBar>
         {this.state.formShowing && (
-          <PaletteMetaDialog palettes={palettes} handleSubmit={handleSubmit} />
+          <PaletteMetaDialog palettes={palettes} handleSubmit={handleSubmit} 
+          handleHide={this.handleHide} />
         )}
       </div>
     );
