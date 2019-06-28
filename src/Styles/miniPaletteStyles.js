@@ -34,7 +34,7 @@ export default {
         fontSize: "1.5rem"
     },
     miniColor: {
-        height: "25%",
+        height: "20%",
         width: "20%",
         display: "inline-block",
         margin: "0 auto",
