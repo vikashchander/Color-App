@@ -2,7 +2,17 @@ import sizes from './sizes';
 import bg from './bg.svg' ;
 
 export default {
-    root:{
+   '@global':{
+    '.fade-exit': {
+       opacity: 1
+    },
+   '.fade-exit-active': {
+    opacity: 0,
+    transition: 'opacity 1000ms ease-out'
+   }
+  },
+
+  root:{
         height: '100vh',
         display:'flex', 
         alignItems:'flex-start',
