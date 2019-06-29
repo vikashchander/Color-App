@@ -1,14 +1,20 @@
-import sizes from './sizes'
+import sizes from './sizes';
+import bg from './bg.svg' ;
 
 export default {
     root:{
-        backgroundColor:'blue',
         height: '100vh',
         display:'flex', 
         alignItems:'flex-start',
         justifyContent:'center', 
-        overflow:'hidden'
-    },
+        overflow:'hidden',
+        backgroundColor:'#ee6c40',
+        backgroundImage: `url(${bg})`
+      },
+      heading:{
+         fontSize: '2rem'
+      },
+
     container:{
         width:'50%',
         display:'flex',
@@ -22,6 +28,7 @@ export default {
       width: "55%"
     }
     },
+
     nav:{
 display:'flex',
 width:'100%',

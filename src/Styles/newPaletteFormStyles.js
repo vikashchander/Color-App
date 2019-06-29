@@ -1,23 +1,25 @@
 import {DrawerMaxWidth} from '../constants';
+import paletteForm from './paletteForm.svg';
 
 const drawerWidth = DrawerMaxWidth;
 const Styles = theme => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
-  },
+    }), 
+   },
+
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }), 
   },
   menuButton: {
     marginLeft: 12,
@@ -29,11 +31,14 @@ const Styles = theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    height:'100vh'
+    height:'100vh',
   },
   drawerPaper: {
     width: drawerWidth,
     display: "flex",
+    backgroundColor: '#330055',
+      backgroundImage: `url(${paletteForm})`
+    
   },
   drawerHeader: {
     display: "flex",

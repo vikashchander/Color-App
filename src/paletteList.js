@@ -23,7 +23,7 @@ class paletteList extends Component{
         <div className={classes.root}>
           <div className={classes.container}>
           <nav className={classes.nav}>
-          <h2>Color Picker</h2>
+          <h2 className={classes.heading}>Color Picker</h2>
            <Link to="/palette/new">Create New</Link>
           </nav>
           <div className={classes.palettes}>
