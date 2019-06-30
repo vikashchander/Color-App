@@ -3,7 +3,6 @@ import DraggableColorBox from "./DraggableColorBox";
 import { SortableContainer } from "react-sortable-hoc";
 
 
-// bug  cannot work random color button
 const DraggableColorList = SortableContainer(({ colors, removeColor }) => {
   return (
     <div style={{ height: "100%" }}>

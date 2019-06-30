@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import DragableColorList from './DragableColorList';
 import { arrayMove } from "react-sortable-hoc";
 import Styles from './Styles/newPaletteFormStyles';
-import seedColor from './seedColor'
+import SeedColor from './seedColor'
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -22,7 +22,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {  
       open: true,
-      colors: seedColor[0].colors
+      colors: SeedColor[0].colors
     };
    this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -75,9 +75,17 @@ class NewPaletteForm extends Component {
 
    generateRandomColor(){
      const allColors = this.props.palettes.map(color=>(color.colors)).flat();
-     var rand = Math.floor(Math.random() * allColors.length);
-     const randColors = allColors[rand];
+     let rand ;
+     let randColors;
  //  console.log({allColors});
+   let isDuplicateColor = true;
+      while (isDuplicateColor) {
+        rand = Math.floor(Math.random() * allColors.length);
+        randColors = allColors[rand];
+          isDuplicateColor = this.state.colors.some(
+         color => (color.name === randColors.name)
+  );
+}
    this.setState({colors:[...this.state.colors, randColors] })
     }
 

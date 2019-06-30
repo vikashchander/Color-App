@@ -1,5 +1,5 @@
 import {DrawerMaxWidth} from '../constants';
-import paletteForm from './paletteForm.svg';
+
 
 const drawerWidth = DrawerMaxWidth;
 const Styles = theme => ({
@@ -36,9 +36,6 @@ const Styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
     display: "flex",
-    backgroundColor: '#330055',
-      backgroundImage: `url(${paletteForm})`
-    
   },
   drawerHeader: {
     display: "flex",

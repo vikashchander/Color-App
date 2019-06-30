@@ -58,7 +58,7 @@ class PaletteMetaDialog extends Component {
 
   render() {
     const { newPaletteName } = this.state;
-    const { handleHide, handleSubmit } = this.props;
+    const { handleHide } = this.props;
 
     return (
       <div>
